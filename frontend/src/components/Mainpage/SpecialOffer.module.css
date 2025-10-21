@@ -1,0 +1,123 @@
+.specialoffer_container {
+  /* height: 500px; */
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  z-index: 1;
+  background-color: black;
+  margin-top: 2.5rem;
+  width: 100%;
+}
+
+.offercontant {
+  color: white;
+  padding-left: 61px;
+  place-self: center;
+}
+
+.offercontant p{
+  font-weight: semibold;
+  color: #00ff66;
+  margin-block: 29px 32px;
+}
+
+.offercontant h1 {
+  font-size: 48px;
+  letter-spacing: 0.2rem;
+  font-weight: 600;
+}
+
+.countTimer {
+  display: flex;
+  justify-content: flex-start;
+  gap: 1.5rem; /*24px*/
+  flex-wrap: wrap;
+}
+
+.countdowntimer {
+  display: flex;
+  min-width: 75px;
+  width: 10%;
+  height: 75px;
+  border-radius: 50%;
+  background-color: #ffffff;
+  color: black;
+  justify-content: center;
+  margin-block: 32px 40px;
+}
+.countbox {
+  display: grid;
+  justify-content: center;
+  text-align: center;
+  width: 28px;
+  height: 34px;
+  margin-top: 1rem;
+}
+
+.countbox span{
+  
+  font-weight: semibold;
+}
+
+.buynowbtn {
+  width: 171px;
+  height: 56px;
+  background-color: #00ff66;
+  color: white;
+  margin-bottom: 2rem;
+}
+/*  */
+
+.offerimg {
+  width: 80%;
+  height: 420px;
+  place-self: center;
+  padding-block: 45px;
+  position: relative;
+  z-index: 3;
+}
+
+.offerimg::before {
+  content: '';
+  /* width: 300px; */
+  width: 80%;
+  height: 300px;
+  background-color: white;
+  border-radius: 50%;
+  top: 13%;
+  left: 22%;
+  position: absolute;
+  z-index: -1;
+  filter: blur(100px);
+}
+
+.offerimg img {
+  /* width: min(100%, 568px); */
+  width: 80%;
+  height: 330px;
+  margin: auto;
+}
+
+@media screen and (max-width: 1170px) {
+  .specialoffer_container {
+    grid-template-columns: 1fr;
+  }
+
+  .countTimer {
+    justify-content: flex-start;
+  }
+  .offercontant {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    padding: 0;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .offercontant h1 {
+    font-size: 32px;
+  }
+}

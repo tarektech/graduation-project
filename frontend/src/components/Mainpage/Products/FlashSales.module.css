@@ -1,0 +1,85 @@
+.container{
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+.innerContainer{
+  display: flex;
+  align-items: center;
+}
+
+.redredtangle {
+  display: block;
+  width: 20px;
+  height: 40px;
+  background-color: #db4444;
+}
+.text {
+  color: #db4444;
+  margin-left: 1rem
+}
+.CountDown {
+  display: flex;
+  gap: 2rem;
+}
+
+.FlashSales {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-right: 20px;
+}
+
+.cardContainer {
+  display: flex;
+  gap: 1.2rem;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 2.5rem;
+  /* border: 1px solid; */
+}
+
+.container button{
+  align-self: center;
+  width: 100%; 
+}
+
+.linespan{
+  width: 80%;
+  height: 1px;
+  background-color: black;
+}
+
+
+@media screen and (max-width: 1170px) {
+  .cardContainer {
+    justify-content: space-around;
+  }
+}
+
+@media screen and (max-width: 928px) {
+  .cardContainer {
+    justify-content: space-around;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .cardContainer {
+    align-items: center;
+    justify-content: center;
+  }
+  .CountDown {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .FlashSales {
+    font-size: 1.2rem;
+  }
+
+  .container button{
+    margin-inline: auto;
+    width: fit-content;
+  }
+}

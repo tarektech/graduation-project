@@ -1,0 +1,44 @@
+.signincontainer{
+    display: grid;
+    grid-template-columns: 1fr;
+    /* outline: 1px green solid; */
+    place-items: center;
+    margin-top: 2.5rem
+}
+
+@media screen and (max-width: 1000px){
+    .signinformcontainer{
+        width: 100%;
+    }
+}
+
+
+.inputcontainer{
+    display: grid;
+    gap: 40px;
+}
+
+.Form{
+    height: 100px;
+    /* outline: 1px solid black; */
+    display: grid;
+    gap: 40px;
+}
+
+.signin{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.submitbtn{
+    background-color: #DB4444;
+    padding: 8px 32px;
+    color: white;
+}
+
+/* @media screen and (max-width: 1000px){
+    .signincontainer{
+        grid-template-columns: 1fr;
+    }
+} */

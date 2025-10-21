@@ -1,0 +1,32 @@
+.container{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-inline: 1.25rem;
+  padding-block: 0.5rem;
+  border-width: 2px;
+  border-style: solid;
+}
+
+.innercontainer{
+  position: relative;
+  display: flex;
+  gap: 1.25rem;
+  align-items: center;
+}
+
+.deleteitem{
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    left: 0;
+    top: 0;
+    transform: translate(-100%, -30%);
+    fill: red;
+    cursor: pointer;
+  }
+
+  .img{
+    width: 4rem;
+    background-color: transparent;
+  }

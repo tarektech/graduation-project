@@ -1,0 +1,10 @@
+.primary_btn {
+  background-color: #db4444;
+  color: white;
+  width: 80%;
+  padding: 0.5rem 1rem;
+  transition: all 0.5s ease-in-out;
+  &:hover {
+    background-color: #1a1a1a;
+  }
+}
