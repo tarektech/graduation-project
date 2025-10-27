@@ -1,7 +1,5 @@
-import React, { useCallback, useState } from 'react';
+import React, { Suspense, lazy } from 'react';
 import './App.css';
-import SignInPage from '@/components/auth/SignInPage';
-import SignUpPage from '@/components/auth/SignUpPage';
 import {
   Route,
   Routes,
@@ -11,20 +9,24 @@ import {
 } from 'react-router-dom';
 import { ChakraProvider } from '@chakra-ui/react';
 
-import NotFoundPage from '@/components/NotFoundPage';
-import ProductPage from '@/components/pages/ProductPage/ProductPage';
-import MainSignInPage from './components/pages/mainPage';
-import CartPage from '@/components/pages/Cart/CartPage';
-import CheckOut from './components/pages/CheckOut/CheckOut';
-
 import { CartProvider } from './context/CartContext';
 import { MantineProvider } from '@mantine/core';
-
-// import axios from 'axios';
 
 import '@mantine/core/styles.css';
 import { AuthContext } from './context/AuthContext';
 import { useAuth } from './components/hooks/useAuth';
+import LoadingSpinner from './components/UI/LoadingSpinner';
+
+// Dynamic imports for code splitting
+const SignInPage = lazy(() => import('@/components/auth/SignInPage'));
+const SignUpPage = lazy(() => import('@/components/auth/SignUpPage'));
+const NotFoundPage = lazy(() => import('@/components/NotFoundPage'));
+const ProductPage = lazy(() =>
+  import('@/components/pages/ProductPage/ProductPage')
+);
+const MainSignInPage = lazy(() => import('./components/pages/mainPage'));
+const CartPage = lazy(() => import('@/components/pages/Cart/CartPage'));
+const CheckOut = lazy(() => import('./components/pages/CheckOut/CheckOut'));
 
 const RouterProvider = () => {
   // const navigate = useNavigate();
@@ -76,7 +78,7 @@ const RouterProvider = () => {
         logout: logout,
       }}
     >
-      {routes}
+      <Suspense fallback={<LoadingSpinner />}>{routes}</Suspense>
     </AuthContext.Provider>
   );
 };
