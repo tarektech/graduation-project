@@ -2,12 +2,11 @@ import React, { useContext, useState } from 'react';
 import NavBar from '../navigation/NavBarSignIn';
 import Footer from '../Footer/Footer';
 import signinupstyles from './SignInup.module.css';
-import './SignUp-Login.css'; 
+import './SignUp-Login.css';
 import { AuthContext } from '@/context/AuthContext';
 import LoadingSpinner from '../UI/LoadingSpinner';
 import { useHttpClient } from '../hooks/http-hook';
 import '../UI/LoadingSpinner.css';
-
 
 function SignUpPage() {
   const auth = useContext(AuthContext);
@@ -18,10 +17,10 @@ function SignUpPage() {
     password: '',
   });
 
-  const { sendRequest, isLoading } = useHttpClient();
+  const { sendRequest, isLoading, error } = useHttpClient();
 
-  const handleNameChange = (event) => {
-    setFormData({ ...formData, name: event.target.value });
+  const handleChange = (event) => {
+    setFormData({ ...formData, [event.target.name]: event.target.value });
   };
 
   const submitForm = async (event) => {
@@ -29,14 +28,14 @@ function SignUpPage() {
     if (!formData.name || !formData.email || !formData.password) {
       console.log('Please fill in all fields');
     } else {
-      try { 
+      try {
         const responseData = await sendRequest(
           'http://localhost:4000/users/signup',
           'POST',
           JSON.stringify({
-            name: name,
-            email: email,
-            password: password,
+            name: formData.name,
+            email: formData.email,
+            password: formData.password,
           }),
           { 'Content-Type': 'application/json' }
         );
@@ -52,7 +51,7 @@ function SignUpPage() {
       <NavBar />
       <div className={signinupstyles.signincontainer}>
         <div className="form-container">
-        {isLoading && <LoadingSpinner  className="center"/>}
+          {isLoading && <LoadingSpinner className="center" />}
           <p className="title">Welcome back</p>
           <form className="form" onSubmit={submitForm}>
             <input
@@ -60,7 +59,7 @@ function SignUpPage() {
               name="name"
               type="name"
               value={formData.name}
-              onChange={handleNameChange}
+              onChange={handleChange}
               className="input"
               placeholder="name"
             />
@@ -69,7 +68,7 @@ function SignUpPage() {
               name="email"
               type="email"
               value={formData.email}
-              onChange={handleEmailChange}
+              onChange={handleChange}
               className="input"
               placeholder="Email"
             />
@@ -77,7 +76,7 @@ function SignUpPage() {
               id="password"
               name="password"
               value={formData.password}
-              onChange={handlePasswordChange}
+              onChange={handleChange}
               type="password"
               className="input"
               placeholder="Password"
