@@ -12,31 +12,24 @@ import '../UI/LoadingSpinner.css';
 function SignUpPage() {
   const auth = useContext(AuthContext);
 
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    password: '',
+  });
 
   const { sendRequest, isLoading } = useHttpClient();
 
   const handleNameChange = (event) => {
-    setName(event.target.value);
-  };
-
-  const handleEmailChange = (event) => {
-    setEmail(event.target.value);
-  };
-
-  const handlePasswordChange = (event) => {
-    setPassword(event.target.value);
+    setFormData({ ...formData, name: event.target.value });
   };
 
   const submitForm = async (event) => {
     event.preventDefault();
-    // const { name, email, password } = formState;
-    if (!name || !email || !password) {
+    if (!formData.name || !formData.email || !formData.password) {
       console.log('Please fill in all fields');
     } else {
-      try {
+      try { 
         const responseData = await sendRequest(
           'http://localhost:4000/users/signup',
           'POST',
@@ -47,7 +40,6 @@ function SignUpPage() {
           }),
           { 'Content-Type': 'application/json' }
         );
-        console.log('responseData', responseData);
         auth.login(responseData.userId, responseData.token);
       } catch (err) {
         console.error('error of sign up ', err);
@@ -67,7 +59,7 @@ function SignUpPage() {
               id="name"
               name="name"
               type="name"
-              value={name}
+              value={formData.name}
               onChange={handleNameChange}
               className="input"
               placeholder="name"
@@ -76,7 +68,7 @@ function SignUpPage() {
               id="email"
               name="email"
               type="email"
-              value={email}
+              value={formData.email}
               onChange={handleEmailChange}
               className="input"
               placeholder="Email"
@@ -84,7 +76,7 @@ function SignUpPage() {
             <input
               id="password"
               name="password"
-              value={password}
+              value={formData.password}
               onChange={handlePasswordChange}
               type="password"
               className="input"

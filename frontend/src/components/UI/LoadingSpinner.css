@@ -1,5 +1,9 @@
 .center {
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
 }
 
 .lds-dual-ring {
@@ -40,5 +44,3 @@
     transform: rotate(360deg);
   }
 }
-
-
