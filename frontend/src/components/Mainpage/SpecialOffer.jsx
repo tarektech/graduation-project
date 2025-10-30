@@ -1,4 +1,4 @@
-import React from 'react';
+
 import global from '@/global.module.css';
 import SpecialOfferStyles from './SpecialOffer.module.css';
 import jblspeaker from '../../assets/JBL_BOOMBOX.png';

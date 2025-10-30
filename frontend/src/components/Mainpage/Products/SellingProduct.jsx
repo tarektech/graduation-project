@@ -29,16 +29,10 @@ function SellingProduct(props) {
           <p>{props.bannername}</p>
         </div>
         <div className={`${categoryStyles.lastsection} `}>
-          <p className={` ${categoryStyles.browse}`}>
-            Best Selling Products
-          </p>
+          <p className={` ${categoryStyles.browse}`}>Best Selling Products</p>
           <Button>View All</Button>
         </div>
-        <div
-          className={` ${sellingProduct.cardContainer}`}
-        >
-          {ProductItems}
-        </div>
+        <div className={` ${sellingProduct.cardContainer}`}>{ProductItems}</div>
       </div>
     </div>
   );

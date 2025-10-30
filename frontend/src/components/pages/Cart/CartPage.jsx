@@ -2,13 +2,11 @@ import cartStyles from './CartPage.module.css';
 import NavBar from '@/components/navigation/NavBarSignIn';
 import Footer from '@/components/Footer/Footer';
 import globalstyles from '@/global.module.css';
-import { Table, Thead, Tr, Th, TableContainer } from '@chakra-ui/react';
-import AddItemToCart from './AddItemToCart';
 import Button from '@/components/UI/Button';
 import { useState } from 'react';
 import { useCart } from '@/context/CartContext';
 import { useNavigate } from 'react-router-dom';
-
+import TableItem from './TableItem';
 /**
  * Render the CartPage component, including handling quantity changes, clicks, and removal of items from the cart.
  *
@@ -17,9 +15,9 @@ import { useNavigate } from 'react-router-dom';
  * @return {JSX.Element} The rendered CartPage component
  */
 
-function CartPage() {
+export default function CartPage() {
   const navigate = useNavigate();
-  const { cartItems, removeFromCart, updateCartTotalPrice } = useCart();
+  const { cartItems } = useCart();
 
   const cartTotalPrice = cartItems.reduce(
     (total, item) => total + item.price * item.quantity,
@@ -29,10 +27,6 @@ function CartPage() {
   const [updatePrice, setUpdatePrice] = useState(0);
   const updateCartTotal = () => {
     setUpdatePrice(cartTotalPrice);
-  };
-
-  const handleRemove = (productId) => {
-    removeFromCart(productId);
   };
 
   const navitgateToCheckOut = () => {
@@ -48,38 +42,7 @@ function CartPage() {
           <p>Cart</p>
         </div>
         <div className={`${cartStyles.cartcontainer}`}>
-          <TableContainer className={`${cartStyles.tablecontainer}`}>
-            <Table
-              variant="simple"
-              size={{
-                md: 'md',
-                sm: 'sm',
-                lg: 'lg',
-              }}
-              className={`${cartStyles.table}`}
-            >
-              <Thead className={cartStyles.thead}>
-                <Tr>
-                  <Th>Product</Th>
-                  <Th>price</Th>
-                  <Th>Quantity</Th>
-                  <Th>Subtotal</Th>
-                </Tr>
-                {cartItems.map((product) => (
-                  <AddItemToCart
-                    key={product.id}
-                    id={product.id}
-                    productname={product.name}
-                    imgsrc={product.imageurl}
-                    price={product.price}
-                    quantity={product.quantity}
-                    handleQuantityChange={updateCartTotalPrice}
-                    handleRemove={handleRemove}
-                  />
-                ))}
-              </Thead>
-            </Table>
-          </TableContainer>
+          <TableItem />
         </div>
         <div className={`${cartStyles.btncontainer} `}>
           <Button
@@ -110,5 +73,3 @@ function CartPage() {
     </>
   );
 }
-
-export default CartPage;

@@ -1,32 +1,64 @@
-.container{
+.container {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-inline: 1.25rem;
-  padding-block: 0.5rem;
-  border-width: 2px;
-  border-style: solid;
+  padding: 1rem 1.75rem;
+  border-bottom: 1px solid #e5e7eb;
+  transition: background-color 0.2s ease;
 }
 
-.innercontainer{
+.container:hover {
+  background-color: #f9fafb;
+}
+
+.container:last-child {
+  border-bottom: none;
+}
+
+.innercontainer {
   position: relative;
   display: flex;
-  gap: 1.25rem;
+  gap: 1rem;
   align-items: center;
+  flex: 1;
 }
 
-.deleteitem{
-    position: absolute;
-    width: 18px;
-    height: 18px;
-    left: 0;
-    top: 0;
-    transform: translate(-100%, -30%);
-    fill: red;
-    cursor: pointer;
-  }
+.innercontainer p {
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: #374151;
+  margin: 0;
+}
 
-  .img{
-    width: 4rem;
-    background-color: transparent;
-  }
+.deleteitem {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  left: -8px;
+  top: -8px;
+  fill: #ef4444;
+  cursor: pointer;
+  transition: transform 0.2s ease, fill 0.2s ease;
+  z-index: 10;
+}
+
+.deleteitem:hover {
+  transform: scale(1.1);
+  fill: #dc2626;
+}
+
+.img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 8px;
+  background-color: #f3f4f6;
+  border: 1px solid #e5e7eb;
+}
+
+.container span {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  min-width: fit-content;
+}

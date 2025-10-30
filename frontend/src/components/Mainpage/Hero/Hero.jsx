@@ -1,4 +1,4 @@
-import React from 'react';
+
 import styles from './Hero.module.css';
 import global from '@/global.module.css';
 // import HeroImg from '../../assets/Hero-1.png';

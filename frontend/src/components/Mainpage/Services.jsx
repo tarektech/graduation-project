@@ -1,4 +1,4 @@
-import React from 'react';
+
 import global from '@/global.module.css';
 import servicesStyles from './Services.module.css';
 import fastdelivery from '@/assets/services/fastdelivery.png';

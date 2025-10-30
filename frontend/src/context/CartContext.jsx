@@ -1,10 +1,14 @@
-import React, { createContext, useState, useContext } from 'react';
+import { createContext, useState, useContext } from 'react';
+import PropTypes from 'prop-types';
 // import { imageData } from '@/data/imageData';
+
+/* eslint-disable react-refresh/only-export-components */
 export const CartContext = createContext();
 
 export const useCart = () => {
   return useContext(CartContext);
 };
+/* eslint-enable react-refresh/only-export-components */
 
 export const CartProvider = ({ children }) => {
   const [cartItems, setCartItems] = useState([]);
@@ -63,12 +67,14 @@ export const CartProvider = ({ children }) => {
   };
 
   const increment = () => {
-    setCounter((prevCounter) => prevCounter < 10 ? prevCounter + 1 : prevCounter);
+    setCounter((prevCounter) =>
+      prevCounter < 10 ? prevCounter + 1 : prevCounter
+    );
   };
 
-  const resetCounter = ()=>{
+  const resetCounter = () => {
     setCounter(1);
-  }
+  };
 
   return (
     <CartContext.Provider
@@ -81,10 +87,14 @@ export const CartProvider = ({ children }) => {
         counter,
         decrement,
         increment,
-        resetCounter
+        resetCounter,
       }}
     >
       {children}
     </CartContext.Provider>
   );
+};
+
+CartProvider.propTypes = {
+  children: PropTypes.node.isRequired,
 };

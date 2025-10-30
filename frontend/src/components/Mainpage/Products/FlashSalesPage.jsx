@@ -34,7 +34,7 @@ function FlashSalesPage(props) {
       </div>
       {/* Products */}
       <div className={`${flashSales.cardContainer}`}>{ProductItems}</div>
-      <Button >View all Products</Button>
+      <Button>View all Products</Button>
       <span className={flashSales.linespan}></span>
     </div>
   );

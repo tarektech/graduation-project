@@ -1,10 +1,28 @@
 .primary_btn {
   background-color: #db4444;
   color: white;
-  width: 80%;
-  padding: 0.5rem 1rem;
-  transition: all 0.5s ease-in-out;
-  &:hover {
-    background-color: #1a1a1a;
-  }
+  width: 100%;
+  padding: 0.875rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  letter-spacing: 0.01em;
+}
+
+.primary_btn:hover {
+  background-color: #c53030;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(219, 68, 68, 0.3);
+}
+
+.primary_btn:active {
+  transform: translateY(0);
+}
+
+.primary_btn:focus {
+  outline: 2px solid #db4444;
+  outline-offset: 2px;
 }

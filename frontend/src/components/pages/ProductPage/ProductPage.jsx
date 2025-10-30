@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import styles from './ProductPage.module.css';
 import NavBar from '@/components/navigation/NavBarSignIn';
 import Footer from '@/components/Footer/Footer';
@@ -20,7 +20,7 @@ function ProductPage() {
   useEffect(() => {
     window.scrollTo(0, 150);
     resetCounter();
-  }, []);
+  }, [ resetCounter ]); 
 
   const { id } = useParams();
 

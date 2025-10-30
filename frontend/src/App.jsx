@@ -6,7 +6,6 @@ import {
   BrowserRouter,
   Navigate,
 } from 'react-router-dom';
-import { ChakraProvider } from '@chakra-ui/react';
 
 import { CartProvider } from './context/CartContext';
 import { MantineProvider } from '@mantine/core';
@@ -85,7 +84,6 @@ const RouterProvider = () => {
 function App() {
   return (
     <React.StrictMode>
-      <ChakraProvider>
         <BrowserRouter>
           <CartProvider>
             <MantineProvider>
@@ -93,7 +91,6 @@ function App() {
             </MantineProvider>
           </CartProvider>
         </BrowserRouter>
-      </ChakraProvider>
     </React.StrictMode>
   );
 }

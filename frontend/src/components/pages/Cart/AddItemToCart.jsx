@@ -1,14 +1,12 @@
 import React, { useState } from 'react';
-import { Tr, Td } from '@chakra-ui/react';
+import { Table } from '@chakra-ui/react';
 import { TiDelete } from 'react-icons/ti';
 import { useCart } from '@/context/CartContext';
 
 import cartStyles from './CartPage.module.css';
 function AddItemToCart(props) {
-
-
-  const {updateQuantity} = useCart();
-  const [counter , setCounter ] = useState(props.quantity);
+  const { updateQuantity } = useCart();
+  const [counter, setCounter] = useState(props.quantity);
 
   const decrement = () => {
     if (counter > 1) {
@@ -24,14 +22,12 @@ function AddItemToCart(props) {
     }
   };
 
-
-  
   const totalItemPrice = counter * props.price;
 
   return (
     <>
-      <Tr>
-        <Td className={`${cartStyles.column1}`}>
+      <Table.Row>
+        <Table.Cell className={`${cartStyles.column1}`}>
           <div className={`${cartStyles.imgcontainer}`}>
             <img className={cartStyles.productimg} src={props.imgsrc} alt="" />
             <TiDelete
@@ -40,9 +36,9 @@ function AddItemToCart(props) {
             />
           </div>
           <h1>{props.productname}</h1>
-        </Td>
-        <Td>{props.price}</Td>
-        <Td>
+        </Table.Cell>
+        <Table.Cell>{props.price}</Table.Cell>
+        <Table.Cell>
           <div className={`${cartStyles.btn_container}`}>
             <button className={`${cartStyles.btn_minus}`} onClick={decrement}>
               <span></span>
@@ -52,9 +48,9 @@ function AddItemToCart(props) {
               +
             </button>
           </div>
-        </Td>
-        <Td>{totalItemPrice}</Td>
-      </Tr>
+        </Table.Cell>
+        <Table.Cell>{totalItemPrice}</Table.Cell>
+      </Table.Row>
     </>
   );
 }
